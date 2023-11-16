@@ -29,6 +29,9 @@ public class Storage<T extends Object> extends Object {
             //return last;
         }
     }
+    public void unloadCar(ArrayList ){
+
+    }
     public void getStorage(){
         if (storageContents.isEmpty()){
             System.out.println("There is no Vehicles on the truck");
