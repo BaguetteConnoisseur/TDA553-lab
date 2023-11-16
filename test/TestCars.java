@@ -22,10 +22,6 @@ public class TestCars {
     }
 
     @Test
-    public void test(){
-        System.out.println(mySaab95.getPosition());
-    }
-    @Test
     public void test_if_startEngine_sets_current_speed(){
         myVolvo240.startEngine();
         assertEquals(0.1, myVolvo240.getCurrentSpeed(), 0.0);
@@ -150,6 +146,7 @@ public class TestCars {
     @Test
     public void test_if_ramp_can_be_adjusted_while_moving(){
         myTransportTruck.gas(1);
+        System.out.println(myTransportTruck.getCurrentSpeed());
         myTransportTruck.lowerRamp();
         myTransportTruck.loadCar(myScania);
         myTransportTruck.stopEngine();
@@ -159,19 +156,24 @@ public class TestCars {
     }
 
     @Test
-    public void test_if_transportTruck_can_contain_more_cars_than_max_and_not_delete_itself() {
+    public void test_if_transportTruck_can_contain_more_cars_than_max_and_not_get_error_when_empty() {
         myTransportTruck.lowerRamp();
         myTransportTruck.getStorage();
         myTransportTruck.loadCar(mySaab95);
         myTransportTruck.loadCar(myVolvo240);
         myTransportTruck.loadCar(myScania);
-        myTransportTruck.getStorage();
+        assertEquals(2, myTransportTruck.getStorageSize(),0.0);
         //assertEquals(3, myTransportTruck.);
 
-        for (int i = 0; i < 3; i++) {
-            myTransportTruck.unloadCar();
-            myTransportTruck.getStorage();
-        }
+        myTransportTruck.raiseRamp();
+        myTransportTruck.unloadCar();
+        assertEquals(2, myTransportTruck.getStorageSize(),0.0);
+
+        myTransportTruck.lowerRamp();
+        myTransportTruck.unloadCar();
+        myTransportTruck.unloadCar();
+        myTransportTruck.unloadCar();
+        assertEquals(0, myTransportTruck.getStorageSize(),0.0);
     }
     @Test
     public void test_if_car_moves_with_transportTruck(){

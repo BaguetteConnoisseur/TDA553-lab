@@ -14,25 +14,27 @@ public class Storage<T extends Object> extends Object {
         return (abs(this.getPositionX() - car.getPositionX()) < 1) && (abs(this.getPositionY() - car.getPositionY()) < 1);
     }
     public void loadCar(T car){
-        if(storageContents.size() < maxLoadAmount && overlaps(car)) {
+        if(storageContents.size() < maxLoadAmount && this.overlaps(car)){
             storageContents.add(car);
-
         }
         else {
             System.out.println("The truck is full");
         }
     }
-    public T unloadCar(){
-        T last = storageContents.getLast();
-        storageContents.removeLast();
-        return last;
+    public void unloadCar(){
+        if (!storageContents.isEmpty()) {
+            T last = storageContents.getLast();
+            last.setPosition(last.getPositionX(), last.getPositionY()-0.5);
+            storageContents.removeLast();
+            //return last;
+        }
     }
     public void getStorage(){
-        if (storageContents.size() == 1){
+        if (storageContents.isEmpty()){
             System.out.println("There is no Vehicles on the truck");
         }
-        for (int i = 1; i < storageContents.size(); i++){
-            System.out.println("This Vehicle is on the truck: " + storageContents.get(i));
+        for (T car : storageContents){
+            System.out.println("This Vehicle is on the truck: " + car);
         }
     }
     public int getStorageSize(){

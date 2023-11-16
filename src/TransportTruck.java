@@ -1,20 +1,14 @@
 import java.awt.*;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-import static java.lang.Math.abs;
 
 public class TransportTruck extends Cars{
-    private final int maxLoadAmount;
     private final Ramp ramp;
     private Storage<Cars> transportedCars;
     public TransportTruck(){
         super(2,70, Color.GREEN,"Transport Truck");
         // super(nrDoors,enginePower,color,modelName);
         super.stopEngine();
-        maxLoadAmount = 2+(1);
-        this.ramp = new Ramp(1);
-        transportedCars = new Storage<Cars>(2);
+        this.ramp = new Ramp(maxRampAngle);
+        transportedCars = new Storage<Cars>(maxLoadAmount);
     }
 
     public double speedFactor() {
@@ -34,6 +28,27 @@ public class TransportTruck extends Cars{
         if (getCurrentSpeed() == 0) {
             ramp.lowerRamp();
         }
+    }
+    public void loadCar(Cars car){
+        if (this.ramp.getRampAngle() == maxRampAngle && !(car instanceof TransportTruck)){
+            transportedCars.loadCar(car);
+        }
+    }
+    public void unloadCar(){
+        if (ramp.getRampAngle()  == maxRampAngle) {
+            transportedCars.unloadCar();
+        }
+    }
+    public void getStorage(){
+        transportedCars.getStorage();
+    }
+    public int getStorageSize(){
+        return transportedCars.getStorageSize();
+    }
+    @Override
+    public void move(){
+        super.move();
+        transportedCars.moveStoredCars(this);
     }
     /*
 

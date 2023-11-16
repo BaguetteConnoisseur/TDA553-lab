@@ -1,28 +1,26 @@
 import java.awt.*;
 import java.awt.geom.Point2D;
 
-public abstract class Cars implements Movable {
+public abstract class Cars extends Object implements Movable {
     private final int nrDoors;
     private final double enginePower;
     private final Color color;
     private final String modelName;
     private Direction direction;
-    private Object position;
 
 
     public Cars(int nrDoors, double enginePower, Color color, String modelName) {
+        super();
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
         this.modelName = modelName;
         this.direction = Direction.NORTH;
-        this.position = new Object();
     }
 
     // TODO kanske skapa en ny kostruktor för lastbilar
 
     public void gas(double amount) {
-
         if (0.0D <= amount && amount <= 1) {
             incrementSpeed(amount);
         }
@@ -46,13 +44,13 @@ public abstract class Cars implements Movable {
     public void move() {
         switch (this.direction) {
             case NORTH:
-                this.position.setPosition(this.position.getPositionX(), (this.position.getPositionY() + getCurrentSpeed())); break;
+                this.setPosition(this.getPositionX(), (this.getPositionY() + getCurrentSpeed())); break;
             case EAST:
-                this.position.setPosition(this.position.getPositionX() + getCurrentSpeed(), this.position.getPositionY()); break;
+                this.setPosition(this.getPositionX() + getCurrentSpeed(), this.getPositionY()); break;
             case SOUTH:
-                this.position.setPosition(this.position.getPositionX(), (this.position.getPositionY() - getCurrentSpeed())); break;
+                this.setPosition(this.getPositionX(), (this.getPositionY() - getCurrentSpeed())); break;
             case WEST:
-                this.position.setPosition(this.position.getPositionX() - getCurrentSpeed(), this.position.getPositionY()); break;
+                this.setPosition(this.getPositionX() - getCurrentSpeed(), this.getPositionY()); break;
         }
 
 
