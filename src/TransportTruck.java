@@ -3,6 +3,8 @@ import java.awt.*;
 public class TransportTruck extends Cars{
     private final Ramp ramp;
     private Storage<Cars> transportedCars;
+    private final int maxRampAngle = 1;
+    private final int maxLoadAmount = 2;
     public TransportTruck(){
         super(2,70, Color.GREEN,"Transport Truck");
         // super(nrDoors,enginePower,color,modelName);
@@ -20,12 +22,12 @@ public class TransportTruck extends Cars{
     }
 
     public void raiseRamp(){
-        if (getCurrentSpeed() == 0){
+        if (this.getCurrentSpeed() == 0.0D){
             ramp.raiseRamp();
         }
     }
     public void lowerRamp(){
-        if (getCurrentSpeed() == 0) {
+        if (this.getCurrentSpeed() == 0.0D) {
             ramp.lowerRamp();
         }
     }

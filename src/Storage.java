@@ -18,7 +18,7 @@ public class Storage<T extends Object> extends Object {
             storageContents.add(car);
         }
         else {
-            System.out.println("The truck is full");
+            System.out.println("Can't load car");
         }
     }
     public void unloadCar(){
@@ -41,9 +41,9 @@ public class Storage<T extends Object> extends Object {
         return storageContents.size();
     }
 
-    public void moveStoredCars() {
+    public void moveStoredCars(Cars movingObject) {
         for (T car : storageContents) {
-            car.setPosition(this.getPositionX(), this.getPositionY());
+            car.setPosition(movingObject.getPositionX(), movingObject.getPositionY());
         }
     }
 }
