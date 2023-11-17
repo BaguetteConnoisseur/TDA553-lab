@@ -29,9 +29,6 @@ public class Storage<T extends Object> extends Object {
             //return last;
         }
     }
-    public void unloadCar(ArrayList ){
-
-    }
     public void getStorage(){
         if (storageContents.isEmpty()){
             System.out.println("There is no Vehicles on the truck");
@@ -39,6 +36,9 @@ public class Storage<T extends Object> extends Object {
         for (T car : storageContents){
             System.out.println("This Vehicle is on the truck: " + car);
         }
+    }
+    public T getLastStorageCar(){
+        return storageContents.getLast();
     }
     public int getStorageSize(){
         return storageContents.size();

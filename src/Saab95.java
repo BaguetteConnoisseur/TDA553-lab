@@ -3,7 +3,7 @@ import java.awt.*;
 public class Saab95 extends Cars {
     private boolean turboOn;
     public Saab95(){
-        super(2,125, Color.red,"Saab95");
+        super(2,125, Color.red,"Saab95", 2, 1900);
         // super(nrDoors,enginePower,color,modelName);
         this.setTurboOff();
         super.stopEngine();

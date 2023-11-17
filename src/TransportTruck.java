@@ -5,10 +5,12 @@ public class TransportTruck extends Cars{
     private Storage<Cars> transportedCars;
     private final int maxRampAngle = 1;
     private final int maxLoadAmount = 2;
+    private final int maxLoadWeight;
     public TransportTruck(){
-        super(2,70, Color.GREEN,"Transport Truck");
+        super(2,70, Color.GREEN,"Transport Truck", 2.5, 18000);
         // super(nrDoors,enginePower,color,modelName);
         super.stopEngine();
+        this.maxLoadWeight = 8000;
         this.ramp = new Ramp(maxRampAngle);
         transportedCars = new Storage<Cars>(maxLoadAmount);
     }
@@ -32,13 +34,20 @@ public class TransportTruck extends Cars{
         }
     }
     public void loadCar(Cars car){
-        if (this.ramp.getRampAngle() == maxRampAngle && !(car instanceof TransportTruck)){
+        if (this.ramp.getRampAngle() == maxRampAngle && !(car instanceof TransportTruck) && (car.getWeight() <= this.maxLoadWeight)){
             transportedCars.loadCar(car);
+        }
+        else {
+            System.out.println("Can't load Car");
         }
     }
     public void unloadCar(){
-        if (ramp.getRampAngle()  == maxRampAngle) {
-            transportedCars.unloadCar();
+        if (ramp.getRampAngle()  == maxRampAngle && transportedCars.getStorageSize() > 0) {
+            Cars lastCar = transportedCars.getLastStorageCar();
+            transportedCars.unloadCar(lastCar);
+        }
+        else {
+            System.out.println("Can't unload");
         }
     }
     public void getStorage(){
