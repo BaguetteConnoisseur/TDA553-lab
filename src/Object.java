@@ -9,9 +9,6 @@ public class Object {
     public void setPosition(double positionX, double positionY) {
         this.position.setLocation(positionX, positionY);
     }
-    public Point2D getPosition(){
-        return position;
-    }
     public double getPositionX() {return this.position.getX();
     }
 
