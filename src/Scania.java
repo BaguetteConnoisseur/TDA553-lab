@@ -23,12 +23,12 @@ public class Scania extends Cars {
             return 0;
     }
 
-    public void raiseBedAngle(int amount) {
+    public void raiseRampAngle(int amount) {
         if (getCurrentSpeed() == 0) {
             ramp.raiseRamp(amount);
         }
     }
-    public void lowerBedAngle(int amount) {
+    public void lowerRampAngle(int amount) {
         if (getCurrentSpeed() == 0) {
             ramp.lowerRamp(amount);
         }
