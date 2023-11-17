@@ -8,6 +8,7 @@ public class TestRamp {
     Volvo240 myVolvo240;
     Scania myScania;
     TransportTruck myTransportTruck;
+    TransportTruck myOtherTransportTruck;
 
     @Before
     public void setup() {
@@ -15,6 +16,11 @@ public class TestRamp {
         myVolvo240 = new Volvo240();
         myScania = new Scania();
         myTransportTruck = new TransportTruck();
+        myOtherTransportTruck = new TransportTruck();
+    }
+    @Test
+    public void test_if_you_can_lower_transportTruck_ramp(){
+        myTransportTruck.lowerRamp();
     }
     @Test
     public void test_if_bedAngle_can_extend_limit_of_vehicle(){
@@ -40,7 +46,11 @@ public class TestRamp {
         assertEquals(0, myScania.getCurrentSpeed(), 0.0);
     }
     @Test
-    public void test_if_you_can_lower_transportTruck_ramp(){
+    public void test_if_car_is_loaded_into_2_storage(){
         myTransportTruck.lowerRamp();
+        myOtherTransportTruck.lowerRamp();
+        myTransportTruck.loadCar(mySaab95);
+        myOtherTransportTruck.loadCar(mySaab95);
+        assertEquals(0,myOtherTransportTruck.getStorageSize(),0.0);
     }
 }

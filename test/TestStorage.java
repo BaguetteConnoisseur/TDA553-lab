@@ -16,7 +16,7 @@ public class TestStorage {
         myVolvo240 = new Volvo240();
         myScania = new Scania();
         myTransportTruck = new TransportTruck();
-        myWorkshop = new Workshop<>();
+        myWorkshop = new Workshop<>(5);
     }
     @Test
     public void test_if_you_can_store_cars(){

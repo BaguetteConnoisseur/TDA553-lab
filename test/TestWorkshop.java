@@ -15,8 +15,8 @@ public class TestWorkshop {
         mySaab95 = new Saab95();
         myVolvo240 = new Volvo240();
         myTransportTruck = new TransportTruck();
-        volvoWorkshop = new Workshop<>();
-        myWorkshop = new Workshop<>();
+        volvoWorkshop = new Workshop<>(5);
+        myWorkshop = new Workshop<>(5);
     }
     @Test
     public void test_if_volvoWorkshop_can_load_a_car(){

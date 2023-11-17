@@ -5,9 +5,8 @@ import java.util.List;
 public class Workshop<T extends Cars> extends Object{
     private Storage<T> StoredCars;
 
-    public Workshop(){
+    public Workshop(int maxLoadAmount){
         super();
-        int maxLoadAmount = 5;
         StoredCars = new Storage<T>(maxLoadAmount);
 
     }
