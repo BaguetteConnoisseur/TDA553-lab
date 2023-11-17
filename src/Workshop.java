@@ -2,28 +2,23 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-public class Workshop extends Object{
-    private Storage<Cars> StoredCars;
-    private ArrayList<Cars> acceptedCars;
+public class Workshop<T extends Cars> extends Object{
+    private Storage<T> StoredCars;
 
     public Workshop(){
         super();
         int maxLoadAmount = 5;
-        StoredCars = new Storage<Cars>(maxLoadAmount);
-
-    }
-    public Workshop(ArrayList<Cars> carNames){
-        super();
-        this.acceptedCars = carNames;
-        int maxLoadAmount = 5;
-        StoredCars = new Storage<Cars>(maxLoadAmount);
+        StoredCars = new Storage<T>(maxLoadAmount);
 
     }
 
-    public void unloadCar(){
-
+    public void unloadCar(T car){
+        StoredCars.unloadCar(car);
     }
-    public void loadCar(){
-        // Check if dimentions are compatable
+    public int getStorageSize(){
+        return StoredCars.getStorageSize();
+    }
+    public void loadCar(T car){
+        StoredCars.loadCar(car);
     }
 }

@@ -7,15 +7,17 @@ public abstract class Cars extends Object implements Movable {
     private final Color color;
     private final String modelName;
     private Direction direction;
+    private final int weight;
 
 
-    public Cars(int nrDoors, double enginePower, Color color, String modelName) {
+    public Cars(int nrDoors, double enginePower, Color color, String modelName, double width, int weight) {
         super();
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
         this.modelName = modelName;
         this.direction = Direction.NORTH;
+        this.weight = weight;
     }
 
     // TODO kanske skapa en ny kostruktor för lastbilar
@@ -100,6 +102,10 @@ public abstract class Cars extends Object implements Movable {
     //private void setColor(Color clr) {color = clr;}
 
     public String getModelName() {return modelName;}
+
+    public int getWeight(){
+        return this.weight;
+    }
 
     public void startEngine() {currentSpeed = 0.1;}
 

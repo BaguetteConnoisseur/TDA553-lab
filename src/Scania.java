@@ -3,7 +3,7 @@ import java.awt.*;
 public class Scania extends Cars {
     private final Ramp ramp;
     public Scania(){
-        super(2,70, Color.GREEN,"Scania");
+        super(2,70, Color.GREEN,"Scania", 2.5, 10000);
         // super(nrDoors,enginePower,color,modelName);
         this.ramp = new Ramp(70);
         super.stopEngine();

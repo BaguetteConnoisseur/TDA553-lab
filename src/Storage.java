@@ -21,12 +21,10 @@ public class Storage<T extends Object> extends Object {
             System.out.println("Can't load car");
         }
     }
-    public void unloadCar(){
+    public void unloadCar(T car){
         if (!storageContents.isEmpty()) {
-            T last = storageContents.getLast();
-            last.setPosition(last.getPositionX(), last.getPositionY()-0.5);
-            storageContents.removeLast();
-            //return last;
+            car.setPosition(car.getPositionX(), car.getPositionY()-0.5);
+            storageContents.remove(car);
         }
     }
     public void getStorage(){
