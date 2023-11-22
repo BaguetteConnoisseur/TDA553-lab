@@ -7,7 +7,7 @@ public class Storage<T extends Object> extends Object {
     private final int maxLoadAmount;
 
     public Storage(int maxLoadAmount){
-        storageContents = new ArrayList<T>();
+        storageContents = new ArrayList<>();
         this.maxLoadAmount = maxLoadAmount;
     }
 

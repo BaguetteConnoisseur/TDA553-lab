@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class TransportTruck extends Cars{
     private final Ramp ramp;
-    private Storage<Cars> transportedCars;
+    private final Storage<Cars> transportedCars;
     private final int maxRampAngle = 1;
     private final int maxLoadAmount = 2;
     private final int maxLoadWeight;

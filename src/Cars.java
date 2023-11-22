@@ -23,7 +23,7 @@ public abstract class Cars extends Object implements Movable {
         this.isLoaded = false;
     }
 
-    // TODO kanske skapa en ny kostruktor för lastbilar
+    // TODO kanske skapa en ny konstruktor för lastbilar
 
     public void gas(double amount) {
         if (0.0D <= amount && amount <= 1) {
