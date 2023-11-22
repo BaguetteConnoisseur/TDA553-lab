@@ -8,6 +8,8 @@ public abstract class Cars extends Object implements Movable {
     private final String modelName;
     private Direction direction;
     private final int weight;
+    public boolean isLoaded;
+
 
 
     public Cars(int nrDoors, double enginePower, Color color, String modelName, double width, int weight) {
