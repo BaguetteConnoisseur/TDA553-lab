@@ -10,12 +10,14 @@ public class TestStorage {
     Scania myScania;
     TransportTruck myTransportTruck;
     Workshop<Cars> myWorkshop;
+    TransportTruck myOtherTransportTruck;
     @Before
     public void setup() {
         mySaab95 = new Saab95();
         myVolvo240 = new Volvo240();
         myScania = new Scania();
         myTransportTruck = new TransportTruck();
+        myOtherTransportTruck = new TransportTruck();
         myWorkshop = new Workshop<>(5);
     }
     @Test
@@ -42,5 +44,18 @@ public class TestStorage {
         myTransportTruck.unloadCar();
         myTransportTruck.unloadCar();
         assertEquals(0, myTransportTruck.getStorageSize(),0.0);
+    }
+    @Test
+    public void test_if_car_is_loaded_into_2_storage(){
+        myTransportTruck.lowerRamp();
+        myOtherTransportTruck.lowerRamp();
+        myTransportTruck.loadCar(mySaab95);
+        myOtherTransportTruck.loadCar(mySaab95);
+        assertEquals(0,myOtherTransportTruck.getStorageSize(),0.0);
+        myOtherTransportTruck.loadCar(mySaab95);
+        assertEquals(0,myOtherTransportTruck.getStorageSize(),0.0);
+        myTransportTruck.unloadCar();
+        myOtherTransportTruck.loadCar(mySaab95);
+        assertEquals(1,myOtherTransportTruck.getStorageSize(),0.0);
     }
 }

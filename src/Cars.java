@@ -8,6 +8,7 @@ public abstract class Cars extends Object implements Movable {
     private final String modelName;
     private Direction direction;
     private final int weight;
+    public boolean isLoaded;
 
 
     public Cars(int nrDoors, double enginePower, Color color, String modelName, double width, int weight) {
@@ -18,6 +19,7 @@ public abstract class Cars extends Object implements Movable {
         this.modelName = modelName;
         this.direction = Direction.NORTH;
         this.weight = weight;
+        this.isLoaded = false;
     }
 
     // TODO kanske skapa en ny kostruktor för lastbilar

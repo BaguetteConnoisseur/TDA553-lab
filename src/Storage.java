@@ -13,19 +13,23 @@ public class Storage<T extends Object> extends Object {
     private boolean overlaps(T car){
         return (abs(this.getPositionX() - car.getPositionX()) < 1) && (abs(this.getPositionY() - car.getPositionY()) < 1);
     }
-    public void loadCar(T car){
+    public boolean loadCar(T car){
         if(storageContents.size() < maxLoadAmount && this.overlaps(car)){
             storageContents.add(car);
+            return true;
         }
         else {
             System.out.println("Can't load car");
+            return false;
         }
     }
-    public void unloadCar(T car){
+    public boolean unloadCar(T car){
         if (!storageContents.isEmpty()) {
             car.setPosition(car.getPositionX(), car.getPositionY()-0.5);
             storageContents.remove(car);
+            return false;
         }
+        return true;
     }
     public void getStorage(){
         if (storageContents.isEmpty()){
