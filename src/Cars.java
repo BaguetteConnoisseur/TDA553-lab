@@ -18,6 +18,7 @@ public abstract class Cars extends Object implements Movable {
         this.modelName = modelName;
         this.direction = Direction.NORTH;
         this.weight = weight;
+        this.isLoaded = false;
     }
 
     // TODO kanske skapa en ny kostruktor för lastbilar

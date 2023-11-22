@@ -34,8 +34,8 @@ public class TransportTruck extends Cars{
         }
     }
     public void loadCar(Cars car){
-        if (this.ramp.getRampAngle() == maxRampAngle && !(car instanceof TransportTruck) && (car.getWeight() <= this.maxLoadWeight)){
-            transportedCars.loadCar(car);
+        if (this.ramp.getRampAngle() == maxRampAngle && !(car instanceof TransportTruck) && (car.getWeight() <= this.maxLoadWeight) && !(car.isLoaded)){
+            car.isLoaded = transportedCars.loadCar(car);
         }
         else {
             System.out.println("Can't load Car");
@@ -44,7 +44,7 @@ public class TransportTruck extends Cars{
     public void unloadCar(){
         if (ramp.getRampAngle()  == maxRampAngle && transportedCars.getStorageSize() > 0) {
             Cars lastCar = transportedCars.getLastStorageCar();
-            transportedCars.unloadCar(lastCar);
+            lastCar.isLoaded = transportedCars.unloadCar(lastCar);
         }
         else {
             System.out.println("Can't unload");
