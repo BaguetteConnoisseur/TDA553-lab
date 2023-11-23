@@ -16,7 +16,7 @@ public class TransportTruck extends Cars{
     }
 
     public double speedFactor() {
-        if (ramp.getRampAngle() == 0) {
+        if (!ramp.getIsRampUp()) {
             return getEnginePower() * 0.01;
         }
         else
