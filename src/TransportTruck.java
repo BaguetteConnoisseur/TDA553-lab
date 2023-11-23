@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class TransportTruck extends Cars{
     private final Ramp ramp;
-    private Storage<Cars> transportedCars;
+    private final Storage<Cars> transportedCars;
     private final int maxLoadWeight;
     public TransportTruck(){
         super(2,70, Color.GREEN,"Transport Truck", 2.5, 18000);
@@ -16,7 +16,7 @@ public class TransportTruck extends Cars{
     }
 
     public double speedFactor() {
-        if (!ramp.getIsRampUp()) {
+        if (ramp.getRampPos() == 0) {
             return getEnginePower() * 0.01;
         }
         else

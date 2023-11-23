@@ -24,6 +24,7 @@ public class Ramp {
     public int getRampPos() {
         return this.rampAngle;
     }
+
     public boolean getIsRampUp() {
         return isRampUp;
     }

@@ -3,13 +3,14 @@ import java.util.ArrayList;
 import static java.lang.Math.abs;
 
 public class Storage<T extends Object> extends Object {
-    private ArrayList<T> storageContents;
+    private final ArrayList<T> storageContents;
     private final int maxLoadAmount;
 
     public Storage(int maxLoadAmount){
-        storageContents = new ArrayList<T>();
+        storageContents = new ArrayList<>();
         this.maxLoadAmount = maxLoadAmount;
     }
+
     private boolean overlaps(T car){
         return (abs(this.getPositionX() - car.getPositionX()) < 1) && (abs(this.getPositionY() - car.getPositionY()) < 1);
     }
