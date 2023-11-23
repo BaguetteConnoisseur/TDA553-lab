@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.awt.geom.Point2D;
 
 public abstract class Cars extends Object implements Movable {
     private final int nrDoors;
@@ -8,6 +7,7 @@ public abstract class Cars extends Object implements Movable {
     private final String modelName;
     private Direction direction;
     private final int weight;
+    private final double width;
     public boolean isLoaded;
 
 
@@ -19,6 +19,7 @@ public abstract class Cars extends Object implements Movable {
         this.modelName = modelName;
         this.direction = Direction.NORTH;
         this.weight = weight;
+        this.width = width;
         this.isLoaded = false;
     }
 
@@ -107,6 +108,10 @@ public abstract class Cars extends Object implements Movable {
 
     public int getWeight(){
         return this.weight;
+    }
+
+    public double getWidth() {
+        return width;
     }
 
     public void startEngine() {currentSpeed = 0.1;}
