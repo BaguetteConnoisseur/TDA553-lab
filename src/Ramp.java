@@ -1,9 +1,13 @@
 public class Ramp {
     private int rampAngle;
-    private final int maxRampAngle;
+    private int maxRampAngle;
+    private boolean isRampUp;
     public Ramp(int maxRampAngle){
         this.maxRampAngle = maxRampAngle;
         this.rampAngle = 0;
+    }
+    public Ramp(boolean isRampUp){
+        this.isRampUp = isRampUp;
     }
     public void raiseRamp(int angle){
         this.rampAngle = Math.max(this.rampAngle - angle, 0);
@@ -12,12 +16,15 @@ public class Ramp {
         this.rampAngle = Math.min(this.rampAngle + angle, this.maxRampAngle);
     }
     public void raiseRamp(){
-        this.rampAngle = 0;
+        this.isRampUp = true;
     }
     public void lowerRamp(){
-        this.rampAngle = this.maxRampAngle;
+        this.isRampUp = false;
     }
-    public int getRampAngle() {
+    public int getRampPos() {
         return this.rampAngle;
+    }
+    public boolean getIsRampUp() {
+        return isRampUp;
     }
 }
