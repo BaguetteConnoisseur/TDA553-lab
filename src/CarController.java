@@ -36,7 +36,9 @@ public class CarController {
 
         // Start the timer
         cc.timer.start();
+
     }
+
 
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
@@ -50,6 +52,14 @@ public class CarController {
                 frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
+
+                if (car.getPositionX() + 100 > frame.drawPanel.getWidth()){
+                    car.setPosition(frame.drawPanel.getWidth() -101, car.getPositionY());
+                    car.turnRight();
+                } else if (car.getPositionY() + 60 > frame.drawPanel.getHeight()) {
+                    car.setPosition(car.getPositionX(), (frame.drawPanel.getHeight()- 61));
+                    car.turnRight();
+                }
             }
         }
     }
