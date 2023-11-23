@@ -10,13 +10,13 @@ public class Scania extends Cars {
     }
     @Override
     public void startEngine() {
-        if (ramp.getRampAngle() == 0){
+        if (ramp.getRampPos() == 0){
             super.startEngine();
         }
     }
 
     public double speedFactor() {
-        if (ramp.getRampAngle() == 0) {
+        if (ramp.getRampPos() == 0) {
             return getEnginePower() * 0.01;
         }
         else
@@ -34,6 +34,6 @@ public class Scania extends Cars {
         }
     }
      public int getRampAngle(){
-        return ramp.getRampAngle();
+        return ramp.getRampPos();
      }
 }

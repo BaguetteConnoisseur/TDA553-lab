@@ -3,20 +3,20 @@ import java.awt.*;
 public class TransportTruck extends Cars{
     private final Ramp ramp;
     private final Storage<Cars> transportedCars;
-    private final int maxRampAngle = 1;
-    private final int maxLoadAmount = 2;
     private final int maxLoadWeight;
     public TransportTruck(){
         super(2,70, Color.GREEN,"Transport Truck", 2.5, 18000);
         // super(nrDoors,enginePower,color,modelName);
         super.stopEngine();
         this.maxLoadWeight = 8000;
-        this.ramp = new Ramp(maxRampAngle);
+        boolean isRampUp = true;
+        this.ramp = new Ramp(isRampUp);
+        int maxLoadAmount = 2;
         this.transportedCars = new Storage<>(maxLoadAmount);
     }
 
     public double speedFactor() {
-        if (ramp.getRampAngle() == 0) {
+        if (ramp.getRampPos() == 0) {
             return getEnginePower() * 0.01;
         }
         else
@@ -34,7 +34,7 @@ public class TransportTruck extends Cars{
         }
     }
     public void loadCar(Cars car){
-        if (this.ramp.getRampAngle() == maxRampAngle && !(car instanceof TransportTruck) && (car.getWeight() <= this.maxLoadWeight) && !(car.isLoaded)){
+        if (!(this.ramp.getIsRampUp()) && !(car instanceof TransportTruck) && (car.getWeight() <= this.maxLoadWeight) && !(car.isLoaded)){
             car.isLoaded = transportedCars.loadCar(car);
         }
         else {
@@ -42,7 +42,7 @@ public class TransportTruck extends Cars{
         }
     }
     public void unloadCar(){
-        if (ramp.getRampAngle()  == maxRampAngle && transportedCars.getStorageSize() > 0) {
+        if (!(ramp.getIsRampUp()) && transportedCars.getStorageSize() > 0) {
             Cars lastCar = transportedCars.getLastStorageCar();
             lastCar.isLoaded = transportedCars.unloadCar(lastCar);
         }
