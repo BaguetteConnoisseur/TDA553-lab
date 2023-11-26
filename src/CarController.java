@@ -54,10 +54,10 @@ public class CarController {
                 frame.drawPanel.repaint();
 
                 if (car.getPositionX() + 100 > frame.drawPanel.getWidth()){
-                    car.setPosition(frame.drawPanel.getWidth() -101, car.getPositionY());
+                    car.setPosition(frame.drawPanel.getWidth() -100, car.getPositionY());
                     car.turnRight();
                 } else if (car.getPositionY() + 60 > frame.drawPanel.getHeight()) {
-                    car.setPosition(car.getPositionX(), (frame.drawPanel.getHeight()- 61));
+                    car.setPosition(car.getPositionX(), (frame.drawPanel.getHeight()- 60));
                     car.turnRight();
                 }
             }
