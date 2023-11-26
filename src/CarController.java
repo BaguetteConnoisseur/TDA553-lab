@@ -81,4 +81,11 @@ public class CarController {
             car.brake(brake);
         }
     }
+    void lowerBed(){ //TODO fix a check that checks if car contains a ramp variable
+        for (Cars car: cars);
+            if (cars.);
+    }
+    void raiseBed(){
+
+    }
 }
