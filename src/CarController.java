@@ -13,7 +13,7 @@ public class CarController {
     // member fields:
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
-    private final int delay = 50;
+    private final int delay = 8;
     // The timer is started with a listener (see below) that executes the statements
     // each step between delays.
     private final Timer timer = new Timer(delay, new TimerListener());
