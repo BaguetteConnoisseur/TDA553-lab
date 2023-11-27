@@ -33,13 +33,6 @@ public class CarController {
         cc.cars.add(new Volvo240());
         cc.cars.add(new Saab95());
         cc.cars.add(new Scania());
-        for (Cars car : cc.cars){
-            System.out.println(car.getModelName());
-            if (Objects.equals(car.getModelName(), "Saab95"))
-                car.setPosition(0, 100);
-            else if (Objects.equals(car.getModelName(), "Scania"))
-                car.setPosition(0, 200);
-        }
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
