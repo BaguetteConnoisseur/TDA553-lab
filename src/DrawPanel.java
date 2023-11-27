@@ -14,7 +14,7 @@ public class DrawPanel extends JPanel{
     BufferedImage saabImage;
     BufferedImage scaniaImage;
     // To keep track of a single cars position
-    //TODO Connect this points to the points of the actual objects
+    //TODO Connect this points to the points of the actual objects and create a createPoints function
     Point volvoPoint = new Point();
     Point saabPoint = new Point(0, 100);
     Point scaniaPoint = new Point(0, 200);
