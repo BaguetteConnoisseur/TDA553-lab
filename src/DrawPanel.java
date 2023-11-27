@@ -22,6 +22,10 @@ public class DrawPanel extends JPanel{
     void moveit(int x, int y){
         volvoPoint.x = x;
         volvoPoint.y = y;
+        saabPoint.x = x;
+        saabPoint.y = y;
+        scaniaPoint.x = x;
+        scaniaPoint.y = y;
     }
 
     // Initializes the panel and reads the images
@@ -37,6 +41,8 @@ public class DrawPanel extends JPanel{
             // Remember to right-click src New -> Package -> name: pics -> MOVE *.jpg to pics.
             // if you are starting in IntelliJ.
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("Volvo240.jpg"));
+            saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("Saab95.jpg"));
+            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("Scania.jpg"));
         } catch (IOException ex)
         {
             ex.printStackTrace();
@@ -50,5 +56,7 @@ public class DrawPanel extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
+        g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
+        g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);
     }
 }

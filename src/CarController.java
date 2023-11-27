@@ -31,6 +31,15 @@ public class CarController {
         CarController cc = new CarController();
 
         cc.cars.add(new Volvo240());
+        cc.cars.add(new Saab95());
+        cc.cars.add(new Scania());
+        for (Cars car : cc.cars){
+            System.out.println(car.getModelName());
+            if (Objects.equals(car.getModelName(), "Saab95"))
+                car.setPosition(0, 100);
+            else if (Objects.equals(car.getModelName(), "Scania"))
+                car.setPosition(0, 200);
+        }
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -55,11 +64,33 @@ public class CarController {
                 frame.drawPanel.repaint();
 
                 if (car.getPositionX() + 100 > frame.drawPanel.getWidth()){
+                    car.stopEngine();
                     car.setPosition(frame.drawPanel.getWidth() -100, car.getPositionY());
                     car.turnRight();
-                } else if (car.getPositionY() + 60 > frame.drawPanel.getHeight()) {
+                    car.turnRight();
+                    car.startEngine();
+                }
+                else if (car.getPositionY() + 60 > frame.drawPanel.getHeight()) {
+                    car.stopEngine();
                     car.setPosition(car.getPositionX(), (frame.drawPanel.getHeight()- 60));
                     car.turnRight();
+                    car.turnRight();
+                    car.startEngine();
+                }
+                else if (car.getPositionY() < 0) {
+                    car.stopEngine();
+                    car.setPosition(car.getPositionX(), 0);
+                    car.turnRight();
+                    car.turnRight();
+                    car.startEngine();
+                }
+                else if (car.getPositionX() < 0) {
+                    car.stopEngine();
+                    car.setPosition(0, car.getPositionY());
+                    car.turnRight();
+                    car.turnRight();
+                    car.startEngine();
+
                 }
             }
         }
@@ -80,6 +111,29 @@ public class CarController {
             car.brake(brake);
         }
     }
+    void stop_all_cars(){
+        for (Cars car : cars){
+            car.stopEngine();
+        }
+    }
+    void start_all_cars(){
+        for (Cars car : cars){
+            car.startEngine();
+        }
+    }
+    void saab_turbo_on(){
+        for (Cars car : cars){
+            if (car instanceof Saab95)
+                ((Saab95) car).setTurboOn();
+        }
+    }
+    void saab_turbo_off(){
+        for (Cars car : cars){
+            if (car instanceof Saab95)
+                ((Saab95) car).setTurboOff();
+        }
+    }
+    /*
     void lowerBed(){ //TODO fix a check that checks if car contains a ramp variable
         for (Cars car: cars);
             if (cars.);
@@ -87,4 +141,6 @@ public class CarController {
     void raiseBed(){
 
     }
+
+     */
 }
