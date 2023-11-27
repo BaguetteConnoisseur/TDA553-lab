@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -67,8 +68,7 @@ public class CarController {
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Cars car : cars
-                ) {
+        for (Cars car : cars) {
             car.gas(gas);
         }
     }
@@ -76,8 +76,7 @@ public class CarController {
     // Calls the brake for each car once
     void brake(int amount) {
         double brake = ((double) amount) / 100;
-        for (Cars car : cars
-        ) {
+        for (Cars car : cars) {
             car.brake(brake);
         }
     }
