@@ -129,7 +129,7 @@ public class CarController {
         }
     }
 
-    void lowerBed() { //TODO fix a check that checks if car contains a ramp variable
+    void lowerBed() {
         for (Cars car : cars) {
             if (car instanceof Scania) {
                 ((Scania) car).lowerRampAngle(10);
