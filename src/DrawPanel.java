@@ -53,7 +53,6 @@ public class DrawPanel extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         //TODO For loop för alla images
-        System.out.println(scaniaPoint.y);
         g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
         g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
         g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);
