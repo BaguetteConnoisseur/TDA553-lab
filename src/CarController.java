@@ -36,9 +36,14 @@ public class CarController {
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
+        for (Cars car: cc.cars) {
+            cc.frame.drawPanel.createPoint(car);
+        }
 
         // Start the timer
         cc.timer.start();
+
+
 
     }
 
@@ -49,6 +54,7 @@ public class CarController {
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Cars car : cars) {
+
                 car.move();
                 int x = (int) Math.round(car.getPositionX());
                 int y = (int) Math.round(car.getPositionY());
@@ -122,14 +128,23 @@ public class CarController {
                 ((Saab95) car).setTurboOff();
         }
     }
-    /*
-    void lowerBed(){ //TODO fix a check that checks if car contains a ramp variable
-        for (Cars car: cars);
-            if (cars.);
+
+    void lowerBed() { //TODO fix a check that checks if car contains a ramp variable
+        for (Cars car : cars) {
+            if (car instanceof Scania) {
+                ((Scania) car).lowerRampAngle(10);
+                System.out.println("RampAngle: "+((Scania) car).getRampAngle());
+            }
+        }
     }
     void raiseBed(){
-
+        for (Cars car : cars) {
+            if (car instanceof Scania) {
+                ((Scania) car).raiseRampAngle(10);
+                System.out.println("RampAngle: "+((Scania) car).getRampAngle());
+            }
+        }
     }
 
-     */
+
 }

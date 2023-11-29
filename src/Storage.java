@@ -26,7 +26,7 @@ public class Storage<T extends Object> extends Object {
     }
     public boolean unloadCar(T car){
         if (!storageContents.isEmpty()) {
-            car.setPosition(car.getPositionX(), car.getPositionY()-0.5);
+            car.setPosition(car.getPositionX(), car.getPositionY()-50);
             storageContents.remove(car);
             return false;
         }

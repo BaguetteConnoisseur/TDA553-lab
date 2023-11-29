@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 // This panel represent the animated part of the view with the car images.
 
@@ -13,20 +16,25 @@ public class DrawPanel extends JPanel{
     BufferedImage volvoImage;
     BufferedImage saabImage;
     BufferedImage scaniaImage;
+    private int starting_y = 0;
     // To keep track of a single cars position
     //TODO Connect this points to the points of the actual objects and create a createPoints function
-    Point volvoPoint = new Point();
-    Point saabPoint = new Point(0, 100);
-    Point scaniaPoint = new Point(0, 200);
+    HashMap<Cars, Point> carPoints = new HashMap<Cars, Point>();
+    public void createPoint(Cars car){
+        int x = 0;
+        carPoints.put(car, new Point(x,starting_y));
+        car.setPosition(x,starting_y);
+        starting_y += 100;
+    }
 
     // TODO: Make this general for all cars
-    void moveit(Cars car, int x, int y){
-        scaniaPoint.x = x;
-        scaniaPoint.y = y;
+    void moveit( Cars car, int x, int y){
+        carPoints.put(car, new Point(x,y));
     }
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
+
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
@@ -44,7 +52,6 @@ public class DrawPanel extends JPanel{
         {
             ex.printStackTrace();
         }
-
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself
@@ -53,8 +60,18 @@ public class DrawPanel extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         //TODO For loop för alla images
-        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
-        g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
-        g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);
+        for (Map.Entry<Cars, Point> carPoint : carPoints.entrySet()){ //TODO Change car image for each car
+            g.drawImage(getImage(carPoint.getKey().getModelName()), carPoint.getValue().x, carPoint.getValue().y, null);
+
+        }
+    }
+
+    private BufferedImage getImage(String modelName) {
+        return switch (modelName) {
+            case ("Volvo240") -> volvoImage;
+            case ("Saab95") -> saabImage;
+            case ("Scania") -> scaniaImage;
+            default -> volvoImage;
+        };
     }
 }
