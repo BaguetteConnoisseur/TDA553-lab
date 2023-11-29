@@ -36,6 +36,9 @@ public class CarController {
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
+        for (Cars car: cc.cars) {
+            cc.frame.drawPanel.createPoint(car);
+        }
 
         // Start the timer
         cc.timer.start();
