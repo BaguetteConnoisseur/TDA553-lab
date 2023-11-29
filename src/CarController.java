@@ -40,6 +40,8 @@ public class CarController {
         // Start the timer
         cc.timer.start();
 
+
+
     }
 
 
@@ -49,44 +51,41 @@ public class CarController {
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Cars car : cars) {
+
                 car.move();
                 int x = (int) Math.round(car.getPositionX());
                 int y = (int) Math.round(car.getPositionY());
                 frame.drawPanel.moveit(car, x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
-
-                if (car.getPositionX() + 100 > frame.drawPanel.getWidth()){
-                    car.stopEngine();
-                    car.setPosition(frame.drawPanel.getWidth() -100, car.getPositionY());
-                    car.turnRight();
-                    car.turnRight();
-                    car.startEngine();
-                }
-                else if (car.getPositionY() + 60 > frame.drawPanel.getHeight()) {
-                    car.stopEngine();
-                    car.setPosition(car.getPositionX(), (frame.drawPanel.getHeight()- 60));
-                    car.turnRight();
-                    car.turnRight();
-                    car.startEngine();
-                }
-                else if (car.getPositionY() < 0) {
-                    car.stopEngine();
-                    car.setPosition(car.getPositionX(), 0);
-                    car.turnRight();
-                    car.turnRight();
-                    car.startEngine();
-                }
-                else if (car.getPositionX() < 0) {
-                    car.stopEngine();
-                    car.setPosition(0, car.getPositionY());
-                    car.turnRight();
-                    car.turnRight();
-                    car.startEngine();
-
-                }
+                changeDirectionIfCarIsOutOfBounds(car);
             }
         }
+    }
+
+    private void changeDirectionIfCarIsOutOfBounds(Cars car) {
+        if (car.getPositionX() + 100 > frame.drawPanel.getWidth()){
+            car.setPosition(frame.drawPanel.getWidth() -100, car.getPositionY());
+            turnCarAroundAndChangeSpeedToLowest(car);
+        }
+        else if (car.getPositionY() + 60 > frame.drawPanel.getHeight()) {
+            car.setPosition(car.getPositionX(), (frame.drawPanel.getHeight()- 60));
+            turnCarAroundAndChangeSpeedToLowest(car);
+        }
+        else if (car.getPositionY() < 0) {
+            car.setPosition(car.getPositionX(), 0);
+            turnCarAroundAndChangeSpeedToLowest(car);
+        }
+        else if (car.getPositionX() < 0) {
+            car.setPosition(0, car.getPositionY());
+            turnCarAroundAndChangeSpeedToLowest(car);
+        }
+    }
+    private void turnCarAroundAndChangeSpeedToLowest(Cars car){
+        car.stopEngine();
+        car.turnRight();
+        car.turnRight();
+        car.startEngine();
     }
 
     // Calls the gas method for each car once
@@ -126,14 +125,23 @@ public class CarController {
                 ((Saab95) car).setTurboOff();
         }
     }
-    /*
-    void lowerBed(){ //TODO fix a check that checks if car contains a ramp variable
-        for (Cars car: cars);
-            if (cars.);
+
+    void lowerBed() { //TODO fix a check that checks if car contains a ramp variable
+        for (Cars car : cars) {
+            if (car instanceof Scania) {
+                ((Scania) car).lowerRampAngle(10);
+                System.out.println("RampAngle: "+((Scania) car).getRampAngle());
+            }
+        }
     }
     void raiseBed(){
-
+        for (Cars car : cars) {
+            if (car instanceof Scania) {
+                ((Scania) car).raiseRampAngle(10);
+                System.out.println("RampAngle: "+((Scania) car).getRampAngle());
+            }
+        }
     }
 
-     */
+
 }

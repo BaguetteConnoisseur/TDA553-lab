@@ -16,6 +16,7 @@ public class DrawPanel extends JPanel{
     BufferedImage volvoImage;
     BufferedImage saabImage;
     BufferedImage scaniaImage;
+    private int starting_y = 0;
     // To keep track of a single cars position
     //TODO Connect this points to the points of the actual objects and create a createPoints function
     Point volvoPoint = new Point();
@@ -30,6 +31,7 @@ public class DrawPanel extends JPanel{
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
+
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
