@@ -12,13 +12,12 @@ import java.util.Map;
 
 public class DrawPanel extends JPanel{
 
-    // Just a single image, TODO: Generalize
+    // Just a single image,
     BufferedImage volvoImage;
     BufferedImage saabImage;
     BufferedImage scaniaImage;
     private int starting_y = 0;
     // To keep track of a single cars position
-    //TODO Connect this points to the points of the actual objects and create a createPoints function
     HashMap<Cars, Point> carPoints = new HashMap<Cars, Point>();
     public void createPoint(Cars car){
         int x = 0;
@@ -27,7 +26,6 @@ public class DrawPanel extends JPanel{
         starting_y += 100;
     }
 
-    // TODO: Make this general for all cars
     void moveit( Cars car, int x, int y){
         carPoints.put(car, new Point(x,y));
     }
@@ -55,12 +53,10 @@ public class DrawPanel extends JPanel{
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself
-    // TODO: Change to suit your needs.
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        //TODO For loop för alla images
-        for (Map.Entry<Cars, Point> carPoint : carPoints.entrySet()){ //TODO Change car image for each car
+        for (Map.Entry<Cars, Point> carPoint : carPoints.entrySet()){
             g.drawImage(getImage(carPoint.getKey().getModelName()), carPoint.getValue().x, carPoint.getValue().y, null);
 
         }
