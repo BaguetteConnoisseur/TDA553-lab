@@ -68,16 +68,16 @@ public class TestCars {
 
         mySaab95.move();
         assertEquals(0.0D, (mySaab95.getPositionX()), 0.0D);
-        assertEquals(1.35D,(mySaab95.getPositionY()), 0.0D);
+        assertEquals(1,(mySaab95.getPositionY()), 0.0D);
 
         mySaab95.turnRight();
         mySaab95.move();
-        assertEquals(1.35D, (mySaab95.getPositionX()), 0.0D);
-        assertEquals(1.35D,(mySaab95.getPositionY()), 0.0D);
+        assertEquals(1, (mySaab95.getPositionX()), 0.0D);
+        assertEquals(1,(mySaab95.getPositionY()), 0.0D);
 
         mySaab95.turnRight();
         mySaab95.move();
-        assertEquals(1.35D, (mySaab95.getPositionX()), 0.0D);
+        assertEquals(1, (mySaab95.getPositionX()), 0.0D);
         assertEquals(0.0D,(mySaab95.getPositionY()), 0.0D);
 
         mySaab95.turnRight();
@@ -113,7 +113,7 @@ public class TestCars {
     public void test_if_volvo240_has_trimFactor(){
         myVolvo240.startEngine();
         myVolvo240.gas(1);
-        assertEquals(1.35D, myVolvo240.getCurrentSpeed(), 0.0);
+        assertEquals(1.35, myVolvo240.getCurrentSpeed(), 0.0);
         myVolvo240.stopEngine();
     }
 }

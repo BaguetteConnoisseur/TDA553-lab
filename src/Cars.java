@@ -17,7 +17,7 @@ public abstract class Cars extends Object implements Movable {
         this.enginePower = enginePower;
         this.color = color;
         this.modelName = modelName;
-        this.direction = Direction.NORTH;
+        this.direction = Direction.EAST;
         this.weight = weight;
         this.width = width;
         this.isLoaded = false;
