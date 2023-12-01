@@ -50,15 +50,15 @@ public class TestCars {
     @Test
     public void test_if_direction_is_changed_myCar_changes_direction(){
         mySaab95.turnLeft();
+        assertEquals("NORTH", mySaab95.getDirection());
+        mySaab95.turnLeft();
         assertEquals("WEST", mySaab95.getDirection());
         mySaab95.turnLeft();
         assertEquals("SOUTH", mySaab95.getDirection());
         mySaab95.turnLeft();
         assertEquals("EAST", mySaab95.getDirection());
-        mySaab95.turnLeft();
-        assertEquals("NORTH", mySaab95.getDirection());
         mySaab95.turnRight();
-        assertEquals("EAST", mySaab95.getDirection());
+        assertEquals("SOUTH", mySaab95.getDirection());
     }
 
     @Test
@@ -67,23 +67,23 @@ public class TestCars {
         mySaab95.gas(1);
 
         mySaab95.move();
-        assertEquals(0.0D, (mySaab95.getPositionX()), 0.0D);
-        assertEquals(1,(mySaab95.getPositionY()), 0.0D);
+        assertEquals(1.35D, (mySaab95.position.getPositionX()), 0.0D);
+        assertEquals(0.0,(mySaab95.position.getPositionY()), 0.0D);
 
-        mySaab95.turnRight();
+        mySaab95.turnLeft();
         mySaab95.move();
-        assertEquals(1, (mySaab95.getPositionX()), 0.0D);
-        assertEquals(1,(mySaab95.getPositionY()), 0.0D);
+        assertEquals(1.35D, (mySaab95.position.getPositionX()), 0.0D);
+        assertEquals(1.35D,(mySaab95.position.getPositionY()), 0.0D);
 
-        mySaab95.turnRight();
+        mySaab95.turnLeft();
         mySaab95.move();
-        assertEquals(1, (mySaab95.getPositionX()), 0.0D);
-        assertEquals(0.0D,(mySaab95.getPositionY()), 0.0D);
+        assertEquals(0.D, (mySaab95.position.getPositionX()), 0.0D);
+        assertEquals(1.35D,(mySaab95.position.getPositionY()), 0.0D);
 
-        mySaab95.turnRight();
+        mySaab95.turnLeft();
         mySaab95.move();
-        assertEquals(0.0D, (mySaab95.getPositionX()), 0.0D);
-        assertEquals(0.0D,(mySaab95.getPositionY()), 0.0D);
+        assertEquals(0.0D, (mySaab95.position.getPositionX()), 0.0D);
+        assertEquals(0.0D,(mySaab95.position.getPositionY()), 0.0D);
         mySaab95.turnRight();
     }
     @Test

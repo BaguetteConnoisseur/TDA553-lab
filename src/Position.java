@@ -1,10 +1,9 @@
-import java.awt.*;
 import java.awt.geom.Point2D;
 
-public class Object {
+public class Position {
     private final Point2D position;
 
-    public Object() {
+    public Position() {
         this.position = new Point2D.Double(0, 0);
     }
     public void setPosition(double positionX, double positionY) {

@@ -22,7 +22,7 @@ public class DrawPanel extends JPanel{
     public void createPoint(Cars car){
         int x = 0;
         carPoints.put(car, new Point(x,starting_y));
-        car.setPosition(x,starting_y);
+        car.position.setPosition(x,starting_y);
         starting_y += 100;
     }
 

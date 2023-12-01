@@ -48,7 +48,7 @@ public class TestTransportTruck {
         myTransportTruck.startEngine();
         myTransportTruck.gas(1);
         myTransportTruck.move();
-        assertEquals(myTransportTruck.getPositionY(),myVolvo240.getPositionY(),0.0D);
+        assertEquals(myTransportTruck.position.getPositionY(),myVolvo240.position.getPositionY(),0.0D);
         myTransportTruck.stopEngine();
         myTransportTruck.lowerRamp();
         myTransportTruck.unloadCar();
@@ -56,7 +56,7 @@ public class TestTransportTruck {
         myTransportTruck.startEngine();
         myTransportTruck.gas(1);
         myTransportTruck.move();
-        assertNotEquals(myVolvo240.getPositionY(), mySaab95.getPositionY());
+        assertNotEquals(myVolvo240.position.getPositionY(), mySaab95.position.getPositionY());
     }
 
     @Test

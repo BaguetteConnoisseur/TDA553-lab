@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public abstract class Cars extends Object implements Movable {
+public abstract class Cars implements Movable {
     private final int nrDoors;
     private final double enginePower;
     private final Color color;
@@ -10,9 +10,12 @@ public abstract class Cars extends Object implements Movable {
     private final double width;
     public boolean isLoaded;
 
+    Position position;
+
 
     public Cars(int nrDoors, double enginePower, Color color, String modelName, double width, int weight) {
         super();
+        position = new Position();
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
@@ -49,13 +52,13 @@ public abstract class Cars extends Object implements Movable {
     public void move() {
         switch (this.direction) {
             case NORTH:
-                this.setPosition(this.getPositionX(), (this.getPositionY() + getCurrentSpeed())); break;
+                this.position.setPosition(this.position.getPositionX(), (this.position.getPositionY() + getCurrentSpeed())); break;
             case EAST:
-                this.setPosition(this.getPositionX() + getCurrentSpeed(), this.getPositionY()); break;
+                this.position.setPosition(this.position.getPositionX() + getCurrentSpeed(), this.position.getPositionY()); break;
             case SOUTH:
-                this.setPosition(this.getPositionX(), (this.getPositionY() - getCurrentSpeed())); break;
+                this.position.setPosition(this.position.getPositionX(), (this.position.getPositionY() - getCurrentSpeed())); break;
             case WEST:
-                this.setPosition(this.getPositionX() - getCurrentSpeed(), this.getPositionY()); break;
+                this.position.setPosition(this.position.getPositionX() - getCurrentSpeed(), this.position.getPositionY()); break;
         }
 
 

@@ -2,21 +2,25 @@ import java.util.ArrayList;
 
 import static java.lang.Math.abs;
 
-public class Storage<T extends Object> extends Object {
+public class Storage<T extends Cars> {
     private final ArrayList<T> storageContents;
     private final int maxLoadAmount;
+    Position position;
 
     public Storage(int maxLoadAmount){
         storageContents = new ArrayList<>();
+        position = new Position();
         this.maxLoadAmount = maxLoadAmount;
+
     }
 
     private boolean overlaps(T car){
-        return (abs(this.getPositionX() - car.getPositionX()) < 1) && (abs(this.getPositionY() - car.getPositionY()) < 1);
+        return (abs(this.position.getPositionX() - car.position.getPositionX()) < 1) && (abs(this.position.getPositionY() - car.position.getPositionY()) < 1);
     }
     public boolean loadCar(T car){
         if(storageContents.size() < maxLoadAmount && this.overlaps(car)){
             storageContents.add(car);
+            System.out.println("Car loaded");
             return true;
         }
         else {
@@ -26,7 +30,7 @@ public class Storage<T extends Object> extends Object {
     }
     public boolean unloadCar(T car){
         if (!storageContents.isEmpty()) {
-            car.setPosition(car.getPositionX(), car.getPositionY()-50);
+            car.position.setPosition(car.position.getPositionX(), car.position.getPositionY()-50);
             storageContents.remove(car);
             return false;
         }
@@ -49,7 +53,7 @@ public class Storage<T extends Object> extends Object {
 
     public void moveStoredCars(Cars movingObject) {
         for (T car : storageContents) {
-            car.setPosition(movingObject.getPositionX(), movingObject.getPositionY());
+            car.position.setPosition(movingObject.position.getPositionX(), movingObject.position.getPositionY());
         }
     }
 }

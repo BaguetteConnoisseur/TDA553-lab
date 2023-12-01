@@ -56,8 +56,8 @@ public class CarController {
             for (Cars car : cars) {
 
                 car.move();
-                int x = (int) Math.round(car.getPositionX());
-                int y = (int) Math.round(car.getPositionY());
+                int x = (int) Math.round(car.position.getPositionX());
+                int y = (int) Math.round(car.position.getPositionY());
                 frame.drawPanel.moveit(car, x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
@@ -67,20 +67,20 @@ public class CarController {
     }
 
     private void changeDirectionIfCarIsOutOfBounds(Cars car) {
-        if (car.getPositionX() + 100 > frame.drawPanel.getWidth()){
-            car.setPosition(frame.drawPanel.getWidth() -100, car.getPositionY());
+        if (car.position.getPositionX() + 100 > frame.drawPanel.getWidth()){
+            car.position.setPosition(frame.drawPanel.getWidth() -100, car.position.getPositionY());
             turnCarAroundAndChangeSpeedToLowest(car);
         }
-        else if (car.getPositionY() + 60 > frame.drawPanel.getHeight()) {
-            car.setPosition(car.getPositionX(), (frame.drawPanel.getHeight()- 60));
+        else if (car.position.getPositionY() + 60 > frame.drawPanel.getHeight()) {
+            car.position.setPosition(car.position.getPositionX(), (frame.drawPanel.getHeight()- 60));
             turnCarAroundAndChangeSpeedToLowest(car);
         }
-        else if (car.getPositionY() < 0) {
-            car.setPosition(car.getPositionX(), 0);
+        else if (car.position.getPositionY() < 0) {
+            car.position.setPosition(car.position.getPositionX(), 0);
             turnCarAroundAndChangeSpeedToLowest(car);
         }
-        else if (car.getPositionX() < 0) {
-            car.setPosition(0, car.getPositionY());
+        else if (car.position.getPositionX() < 0) {
+            car.position.setPosition(0, car.position.getPositionY());
             turnCarAroundAndChangeSpeedToLowest(car);
         }
     }
