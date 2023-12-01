@@ -1,0 +1,20 @@
+Steg 0:
+Fixa så allt inte extendar från Object utan att Object blir en komposition och att det inte heter object utan Position.
+
+Steg 1:
+Skapa två nya filer, Game som är en applikation och CarConstructor som är en Factory.
+
+Steg 2:
+Flytta Actionlisteners till Game.
+
+Steg 3:
+Från CarController ska vi ta Main funktionen och föra över det som utförs till Game-filen som har main som körs. CarConstructurn ska kunna skapa de nya bilarna och ge den en bild från en imageList och lägger allt i en lista. createPoint ska vara kvar i CarController då det är där den används.
+
+Steg 4:
+Implementera den nya konstruktorn CarConstructor med Main.
+
+Steg 5: 
+Flytta över allt som man ska kunna påverka till Game, ex antal bilar, vilka bilar, vilka bilder, mm. 
+
+Steg 6:
+Flytta många Usage-dependencys från CarController till Game så att CarController inte har så mycket makt.
