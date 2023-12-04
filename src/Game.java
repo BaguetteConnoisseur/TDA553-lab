@@ -9,14 +9,13 @@ public class Game{
     public ArrayList<Cars> cars;
 
     private static CarController cc;
-
     private final int delay = 8;
     // The timer is started with a listener (see below) that executes the statements
     // each step between delays.
     public static void main(String[] args) {
         // Instance of this class
-        CarController cc = new CarController();
-
+        cc = new CarController();
+        //initButtons();
         cc.cars.add(CarFactory.createVolvo240());
         cc.cars.add(CarFactory.createSaab95());
         cc.cars.add(CarFactory.createScania());
@@ -40,5 +39,19 @@ public class Game{
             case "TransportTruck":
                 TransportTruck transporttruck = CarFactory.createTransportTruck();
         }
+    }
+    private void initActionListener(){
+        cc.frame.brakeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cc.brake(cc.frame.gasAmount);
+            }
+        });
+        cc.frame.gasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cc.gas(cc.frame.gasAmount);
+            }
+        });
     }
 }

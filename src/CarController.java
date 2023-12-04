@@ -28,7 +28,6 @@ public class CarController {
 
     private JTextField resultText;
 
-    HashMap<Cars, Point> carPoints = new HashMap<Cars, Point>();
     //methods:
 
     /*
@@ -58,15 +57,15 @@ public class CarController {
     * */
     public void startTimer(){
         timer.start();
+
     }
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Cars car : cars) {
-
                 car.move();
                 int x = (int) Math.round(car.position.getPositionX());
                 int y = (int) Math.round(car.position.getPositionY());
-                moveit(car, x, y);
+                frame.drawPanel.moveit(car, x, y);
                 changeDirectionIfCarIsOutOfBounds(car);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
@@ -74,10 +73,12 @@ public class CarController {
             }
         }
     }
+    /*
     void moveit(Cars car, int x, int y){
-        carPoints.put(car, new Point(x,y));
+        frame.carPoints.put(car, new Point(x,y));
+        System.out.println(carPoints);
     }
-
+    */
     private void changeDirectionIfCarIsOutOfBounds(Cars car) {
         if (car.position.getPositionX() + 100 > frame.drawPanel.getWidth()){
             car.position.setPosition(frame.drawPanel.getWidth() -100, car.position.getPositionY());

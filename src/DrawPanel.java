@@ -26,12 +26,11 @@ public class DrawPanel extends JPanel{
         starting_y += 100;
     }
 
-    /*
+
     void moveit( Cars car, int x, int y){
         carPoints.put(car, new Point(x,y));
     }
 
-     */
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
