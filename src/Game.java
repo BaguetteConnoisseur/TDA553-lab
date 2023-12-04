@@ -20,7 +20,7 @@ public class Game{
         cc.cars.add(CarFactory.createSaab95());
         cc.cars.add(CarFactory.createScania());
 
-        // Start a new view and send a reference of self
+        // Start a new view
         cc.frame = new CarView("CarSim 1.0");
         //TODO Lite Bad bad nono
         cc.game = new Game(); //TODO Dubbel pil mellan game och carcontroller
