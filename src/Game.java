@@ -22,6 +22,10 @@ public class Game{
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
+        //TODO Lite Bad bad nono
+        cc.game = new Game(); //TODO Dubbel pil mellan game och carcontroller
+        cc.game.initActionListener();
+
         for (Cars car: cc.cars) {
             cc.frame.drawPanel.createPoint(car);
         }
@@ -40,6 +44,8 @@ public class Game{
                 TransportTruck transporttruck = CarFactory.createTransportTruck();
         }
     }
+
+    //ActionListeners for all the buttons in the view
     private void initActionListener(){
         cc.frame.brakeButton.addActionListener(new ActionListener() {
             @Override
@@ -51,6 +57,42 @@ public class Game{
             @Override
             public void actionPerformed(ActionEvent e) {
                 cc.gas(cc.frame.gasAmount);
+            }
+        });
+        cc.frame.startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cc.start_all_cars();
+            }
+        });
+        cc.frame.stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cc.stop_all_cars();
+            }
+        });
+        cc.frame.turboOffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cc.saab_turbo_off();
+            }
+        });
+        cc.frame.turboOnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cc.saab_turbo_on();
+            }
+        });
+        cc.frame.lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cc.lowerBed();
+            }
+        });
+        cc.frame.liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cc.raiseBed();
             }
         });
     }
