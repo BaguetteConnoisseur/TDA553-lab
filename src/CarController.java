@@ -21,6 +21,9 @@ public class CarController {
     // each step between delays.
     private final Timer timer = new Timer(delay, new TimerListener());
 
+    //Cars starting Y-pos
+    private int starting_y = 0;
+
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
 
@@ -28,38 +31,11 @@ public class CarController {
     // A list of cars, modify if needed
     ArrayList<Cars> cars = new ArrayList<>();
 
-    private JTextField resultText;
-
-    //methods:
-
-    /*
-    public static void main(String[] args) {
-        // Instance of this class
-        CarController cc = new CarController();
-
-        cc.cars.add(new Volvo240());
-        cc.cars.add(new Saab95());
-        cc.cars.add(new Scania());
-
-        // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc);
-        for (Cars car: cc.cars) {
-            cc.frame.drawPanel.createPoint(car);
-        }
-
-        // Start the timer
-        cc.timer.start();
-    }
-
-     */
-
-
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
     * */
     public void startTimer(){
         timer.start();
-
     }
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -71,7 +47,6 @@ public class CarController {
                 changeDirectionIfCarIsOutOfBounds(car);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
-
             }
         }
     }
@@ -106,11 +81,13 @@ public class CarController {
         car.startEngine();
     }
 
-
-    public void actionPerformed(ActionEvent e) {
-        String command = e.getActionCommand();
-        resultText.setText(command);
+    public void createPoint(Cars car){
+        int x = 0;
+        frame.drawPanel.carPoints.put(car, new Point(x,starting_y));
+        car.position.setPosition(x,starting_y);
+        starting_y += 100;
     }
+
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;

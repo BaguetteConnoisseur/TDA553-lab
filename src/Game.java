@@ -27,7 +27,7 @@ public class Game{
         cc.game.initActionListener();
 
         for (Cars car: cc.cars) {
-            cc.frame.drawPanel.createPoint(car);
+            cc.createPoint(car);
         }
         cc.startTimer();
     }

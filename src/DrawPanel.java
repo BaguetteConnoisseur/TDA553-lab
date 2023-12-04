@@ -16,16 +16,8 @@ public class DrawPanel extends JPanel{
     BufferedImage volvoImage;
     BufferedImage saabImage;
     BufferedImage scaniaImage;
-    private int starting_y = 0;
     // To keep track of a single cars position
     HashMap<Cars, Point> carPoints = new HashMap<Cars, Point>();
-    public void createPoint(Cars car){
-        int x = 0;
-        carPoints.put(car, new Point(x,starting_y));
-        car.position.setPosition(x,starting_y);
-        starting_y += 100;
-    }
-
 
     void moveit( Cars car, int x, int y){
         carPoints.put(car, new Point(x,y));
