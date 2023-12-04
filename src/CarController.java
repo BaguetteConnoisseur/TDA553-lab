@@ -98,6 +98,11 @@ public class CarController {
         car.startEngine();
     }
 
+
+    public void actionPerformed(ActionEvent e) {
+        String command = e.getActionCommand();
+        resultText.setText(command);
+    }
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;

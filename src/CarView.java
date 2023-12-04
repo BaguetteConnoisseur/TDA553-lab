@@ -42,13 +42,13 @@ public class CarView extends JFrame{
     // Constructor
     public CarView(String frameName, CarController cc){
         this.carC = cc;
-        initComponents(frameName);
+        initComponents(frameName, cc);
     }
 
 
     // Sets everything in place and fits everything
     // TODO: Take a good look and make sure you understand how these methods and components work
-    private void initComponents(String title) {
+    private void initComponents(String title, CarController parent) {
 
         this.setTitle(title);
         this.setPreferredSize(new Dimension(X,Y));
@@ -79,6 +79,7 @@ public class CarView extends JFrame{
         controlPanel.setLayout(new GridLayout(2,4));
 
         controlPanel.add(gasButton, 0);
+        gasButton.addActionListener(this.carC);
         controlPanel.add(turboOnButton, 1);
         controlPanel.add(liftBedButton, 2);
         controlPanel.add(brakeButton, 3);
