@@ -26,6 +26,7 @@ public class CarController {
 
     //methods:
 
+    /*
     public static void main(String[] args) {
         // Instance of this class
         CarController cc = new CarController();
@@ -42,15 +43,17 @@ public class CarController {
 
         // Start the timer
         cc.timer.start();
-
-
-
     }
+
+     */
 
 
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
     * */
+    public void startTimer(){
+        timer.start();
+    }
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Cars car : cars) {
@@ -58,12 +61,16 @@ public class CarController {
                 car.move();
                 int x = (int) Math.round(car.position.getPositionX());
                 int y = (int) Math.round(car.position.getPositionY());
-                frame.drawPanel.moveit(car, x, y);
+                moveit(car, x, y);
+                changeDirectionIfCarIsOutOfBounds(car);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
-                changeDirectionIfCarIsOutOfBounds(car);
+
             }
         }
+    }
+    void moveit(Cars car, int x, int y){
+        carPoints.put(car, new Point(x,y));
     }
 
     private void changeDirectionIfCarIsOutOfBounds(Cars car) {
