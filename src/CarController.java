@@ -1,7 +1,9 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 /*
@@ -24,6 +26,9 @@ public class CarController {
     // A list of cars, modify if needed
     ArrayList<Cars> cars = new ArrayList<>();
 
+    private JTextField resultText;
+
+    HashMap<Cars, Point> carPoints = new HashMap<Cars, Point>();
     //methods:
 
     /*
