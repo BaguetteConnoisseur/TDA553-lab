@@ -43,7 +43,7 @@ public class CarController {
                 car.move();
                 int x = (int) Math.round(car.position.getPositionX());
                 int y = (int) Math.round(car.position.getPositionY());
-                frame.drawPanel.moveit(car, x, y);
+                moveit(car, x, y);
                 changeDirectionIfCarIsOutOfBounds(car);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
@@ -86,6 +86,10 @@ public class CarController {
         frame.drawPanel.carPoints.put(car, new Point(x,starting_y));
         car.position.setPosition(x,starting_y);
         starting_y += 100;
+    }
+
+    void moveit( Cars car, int x, int y){
+        frame.drawPanel.carPoints.put(car, new Point(x,y));
     }
 
     // Calls the gas method for each car once

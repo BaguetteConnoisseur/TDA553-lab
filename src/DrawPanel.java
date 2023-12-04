@@ -19,10 +19,6 @@ public class DrawPanel extends JPanel{
     // To keep track of a single cars position
     HashMap<Cars, Point> carPoints = new HashMap<Cars, Point>();
 
-    void moveit( Cars car, int x, int y){
-        carPoints.put(car, new Point(x,y));
-    }
-
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
