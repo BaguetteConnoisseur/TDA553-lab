@@ -50,12 +50,7 @@ public class CarController {
             }
         }
     }
-    /*
-    void moveit(Cars car, int x, int y){
-        frame.carPoints.put(car, new Point(x,y));
-        System.out.println(carPoints);
-    }
-    */
+
     private void changeDirectionIfCarIsOutOfBounds(Cars car) {
         if (car.position.getPositionX() + 100 > frame.drawPanel.getWidth()){
             car.position.setPosition(frame.drawPanel.getWidth() -100, car.position.getPositionY());
