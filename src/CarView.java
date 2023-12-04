@@ -79,7 +79,6 @@ public class CarView extends JFrame{
         controlPanel.setLayout(new GridLayout(2,4));
 
         controlPanel.add(gasButton, 0);
-        gasButton.addActionListener(this.carC);
         controlPanel.add(turboOnButton, 1);
         controlPanel.add(liftBedButton, 2);
         controlPanel.add(brakeButton, 3);
