@@ -26,7 +26,6 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
 
-    Game game;
     // A list of cars, modify if needed
     ArrayList<Cars> cars = new ArrayList<>();
 
@@ -42,7 +41,7 @@ public class CarController {
                 car.move();
                 int x = (int) Math.round(car.position.getPositionX());
                 int y = (int) Math.round(car.position.getPositionY());
-                moveit(car, x, y);
+                //moveit(car, x, y);
                 changeDirectionIfCarIsOutOfBounds(car);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
@@ -75,17 +74,71 @@ public class CarController {
         car.startEngine();
     }
 
-    public void createPoint(Cars car){
-        int x = 0;
-        frame.drawPanel.carPoints.put(car, new Point(x,starting_y));
-        car.position.setPosition(x,starting_y);
+    public void setStartingPosition(Cars car){
+        car.position.setPosition(0,starting_y);
         starting_y += 100;
     }
 
+
+    public void initlisteners(){
+        initActionListener();
+    }
+    //ActionListeners for all the buttons in the view
+    private void initActionListener(){
+        frame.brakeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                brake(frame.gasAmount);
+            }
+        });
+        frame.gasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gas(frame.gasAmount);
+            }
+        });
+        frame.startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                start_all_cars();
+            }
+        });
+        frame.stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                stop_all_cars();
+            }
+        });
+        frame.turboOffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                saab_turbo_off();
+            }
+        });
+        frame.turboOnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                saab_turbo_on();
+            }
+        });
+        frame.lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                lowerBed();
+            }
+        });
+        frame.liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                raiseBed();
+            }
+        });
+    }
+    /*
     void moveit( Cars car, int x, int y){
         frame.drawPanel.carPoints.put(car, new Point(x,y));
     }
-
+    */
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;

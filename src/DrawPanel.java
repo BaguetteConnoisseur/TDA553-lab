@@ -11,18 +11,15 @@ import java.util.Map;
 // This panel represent the animated part of the view with the car images.
 
 public class DrawPanel extends JPanel{
-
-    // Just a single image,
-    BufferedImage volvoImage;
-    BufferedImage saabImage;
-    BufferedImage scaniaImage;
     // To keep track of a single cars position
-    HashMap<Cars, Point> carPoints = new HashMap<Cars, Point>();
+    //HashMap<Cars, Point> carPoints = new HashMap<Cars, Point>();
+    ArrayList<Cars> cars = new ArrayList<Cars>();
 
 
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y) {
+    public DrawPanel(int x, int y, ArrayList<Cars> cars) {
 
+        this.cars = cars;
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
@@ -33,9 +30,9 @@ public class DrawPanel extends JPanel{
             // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
             // Remember to right-click src New -> Package -> name: pics -> MOVE *.jpg to pics.
             // if you are starting in IntelliJ.
-            volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("Volvo240.jpg"));
-            saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("Saab95.jpg"));
-            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("Scania.jpg"));
+            for (Cars car: cars){
+                car.vehicleImage = ImageIO.read(DrawPanel.class.getResourceAsStream(car.getModelName()+".jpg"));
+            }
         } catch (IOException ex)
         {
             ex.printStackTrace();
@@ -46,18 +43,9 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (Map.Entry<Cars, Point> carPoint : carPoints.entrySet()){
-            g.drawImage(getImage(carPoint.getKey().getModelName()), carPoint.getValue().x, carPoint.getValue().y, null);
+        for (Cars car: cars){
+            g.drawImage(car.vehicleImage, (int)car.getPositionX(), (int)car.getPositionY(), null);
 
         }
-    }
-
-    private BufferedImage getImage(String modelName) {
-        return switch (modelName) {
-            case ("Volvo240") -> volvoImage;
-            case ("Saab95") -> saabImage;
-            case ("Scania") -> scaniaImage;
-            default -> volvoImage;
-        };
     }
 }

@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public abstract class Cars implements Movable {
     private final int nrDoors;
@@ -9,6 +10,7 @@ public abstract class Cars implements Movable {
     private final int weight;
     private final double width;
     public boolean isLoaded;
+    protected BufferedImage vehicleImage;
 
     Position position;
 
@@ -96,6 +98,12 @@ public abstract class Cars implements Movable {
         return this.direction.name();
     }
     private void setCurrentSpeed(double amount) {this.currentSpeed = amount;}
+    protected double getPositionX(){
+        return this.position.getPositionX();
+    }
+    protected double getPositionY(){
+        return this.position.getPositionY();
+    }
 
     public int getNrDoors() {return nrDoors;}
 

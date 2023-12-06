@@ -6,10 +6,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Game{
-    public ArrayList<Cars> cars;
+    //public static ArrayList<Cars> cars;
 
     private static CarController cc;
-    private final int delay = 8;
     // The timer is started with a listener (see below) that executes the statements
     // each step between delays.
     public static void main(String[] args) {
@@ -27,11 +26,28 @@ public class Game{
         cc.game.initActionListener();
 
         for (Cars car: cc.cars) {
-            cc.createPoint(car);
+            cc.setStartingPosition(car);
         }
         cc.startTimer();
+        //cc.timer.Start();
     }
-
+    /*
+    private final int delay = 8;
+    private final Timer timer = new Timer(delay, new TimerListener());
+    private class TimerListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            for (Cars car : cc.cars) {
+                car.move();
+                int x = (int) Math.round(car.position.getPositionX());
+                int y = (int) Math.round(car.position.getPositionY());
+                //moveit(car, x, y);
+                cc.changeDirectionIfCarIsOutOfBounds(car);
+                // repaint() calls the paintComponent method of the panel
+                cc.frame.drawPanel.repaint();
+            }
+        }
+    }
+    */
     public void createCar(String name){
         switch(name) {
             case "Volvo240":
@@ -43,57 +59,5 @@ public class Game{
             case "TransportTruck":
                 TransportTruck transporttruck = CarFactory.createTransportTruck();
         }
-    }
-
-    //ActionListeners for all the buttons in the view
-    private void initActionListener(){
-        cc.frame.brakeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cc.brake(cc.frame.gasAmount);
-            }
-        });
-        cc.frame.gasButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cc.gas(cc.frame.gasAmount);
-            }
-        });
-        cc.frame.startButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cc.start_all_cars();
-            }
-        });
-        cc.frame.stopButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cc.stop_all_cars();
-            }
-        });
-        cc.frame.turboOffButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cc.saab_turbo_off();
-            }
-        });
-        cc.frame.turboOnButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cc.saab_turbo_on();
-            }
-        });
-        cc.frame.lowerBedButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cc.lowerBed();
-            }
-        });
-        cc.frame.liftBedButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cc.raiseBed();
-            }
-        });
     }
 }
