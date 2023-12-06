@@ -49,7 +49,7 @@ public class CarController {
         }
     }
 
-    private void changeDirectionIfCarIsOutOfBounds(Cars car) {
+    protected void changeDirectionIfCarIsOutOfBounds(Cars car) {
         if (car.position.getPositionX() + 100 > frame.drawPanel.getWidth()){
             car.position.setPosition(frame.drawPanel.getWidth() -100, car.position.getPositionY());
             turnCarAroundAndChangeSpeedToLowest(car);

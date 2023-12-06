@@ -20,18 +20,17 @@ public class Game{
         cc.cars.add(CarFactory.createScania());
 
         // Start a new view
-        cc.frame = new CarView("CarSim 1.0");
-        //TODO Lite Bad bad nono
-        cc.game = new Game(); //TODO Dubbel pil mellan game och carcontroller
-        cc.game.initActionListener();
+        cc.frame = new CarView("CarSim 1.0", cc.cars);
+        cc.initlisteners();
 
         for (Cars car: cc.cars) {
             cc.setStartingPosition(car);
         }
-        cc.startTimer();
-        //cc.timer.Start();
+        new Game().begin();
     }
-    /*
+    private void begin(){
+        timer.start();
+    }
     private final int delay = 8;
     private final Timer timer = new Timer(delay, new TimerListener());
     private class TimerListener implements ActionListener {
@@ -47,7 +46,6 @@ public class Game{
             }
         }
     }
-    */
     public void createCar(String name){
         switch(name) {
             case "Volvo240":
