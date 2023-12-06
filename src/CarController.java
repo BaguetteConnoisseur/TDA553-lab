@@ -27,6 +27,8 @@ public class CarController {
     // A list of cars, modify if needed
     ArrayList<Cars> cars = new ArrayList<>();
 
+    int maxAmountOfCars = 10;
+
     protected void changeDirectionIfCarIsOutOfBounds(Cars car) {
         if (car.position.getPositionX() + 100 > frame.drawPanel.getWidth()){
             car.position.setPosition(frame.drawPanel.getWidth() -100, car.position.getPositionY());
@@ -55,6 +57,15 @@ public class CarController {
     public void setStartingPosition(Cars car){
         car.position.setPosition(0,starting_y);
         starting_y += 100;
+    }
+    private void setNewCarPositionAndRandomDirection(){
+        cars.getLast().position.setPosition(Math.random()*800, Math.random()*560);
+        for (int i= 0; i <= Math.random()*4; i++){
+            cars.getLast().turnRight();
+        }
+    }
+    private int numberOfCars(){
+        return cars.size();
     }
 
 
@@ -114,62 +125,90 @@ public class CarController {
         frame.addVolvo240Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cars.add(CarFactory.createVolvo240());
+                addVolvo240();
             }
         });
         frame.addSaab95Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cars.add(CarFactory.createSaab95());
+                addSaab95();
             }
         });
         frame.addScaniaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cars.add(CarFactory.createScania());
+                addScania();
             }
         });
-        frame.removeVolvo240.addActionListener(new ActionListener() {
+        frame.removeVolvo240Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (Cars car : cars){
-                    if (car instanceof Volvo240){
-                        cars.remove(car);
-                        break;
-                    }
-                }
+                removeVolvo240();
             }
         });
-        frame.removeSaab95.addActionListener(new ActionListener() {
+        frame.removeSaab95Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (Cars car : cars){
-                    if (car instanceof Saab95){
-                        cars.remove(car);
-                        break;
-                    }
-                }
+                removeSaab95();
             }
         });
-        frame.removeScania.addActionListener(new ActionListener() {
+        frame.removeScaniaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (Cars car : cars){
-                    if (car instanceof Scania){
-                        cars.remove(car);
-                        break;
-                    }
-                }
+                removeScania();
             }
         });
 
     }
-    /*
-    void moveit( Cars car, int x, int y){
-        frame.drawPanel.carPoints.put(car, new Point(x,y));
+
+    private void removeScania() {
+        for (Cars car : cars){
+            if (car instanceof Scania){
+                cars.remove(car);
+                break;
+            }
+        }
     }
-    */
-    // Calls the gas method for each car once
+
+    private void removeSaab95() {
+        for (Cars car : cars){
+            if (car instanceof Saab95){
+                cars.remove(car);
+                break;
+            }
+        }
+    }
+
+    private void removeVolvo240() {
+        for (Cars car : cars){
+            if (car instanceof Volvo240){
+                cars.remove(car);
+                break;
+            }
+        }
+    }
+
+    private void addScania() {
+        if (numberOfCars() < maxAmountOfCars) {
+            cars.add(CarFactory.createScania());
+            setNewCarPositionAndRandomDirection();
+        }
+    }
+
+    private void addSaab95() {
+        if (numberOfCars() < maxAmountOfCars) {
+            cars.add(CarFactory.createSaab95());
+            setNewCarPositionAndRandomDirection();
+        }
+    }
+
+    private void addVolvo240() {
+        if (numberOfCars() < maxAmountOfCars) {
+            cars.add(CarFactory.createVolvo240());
+            setNewCarPositionAndRandomDirection();
+        }
+    }
+
     void gas(int amount) {
         double gas = ((double) amount) / 100;
         for (Cars car : cars) {

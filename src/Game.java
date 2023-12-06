@@ -44,6 +44,7 @@ public class Game{
                 // repaint() calls the paintComponent method of the panel
                 cc.frame.drawPanel.repaint();
             }
+            
         }
     }
     public void createCar(String name){
