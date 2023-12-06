@@ -59,7 +59,7 @@ public class CarController {
         starting_y += 100;
     }
     private void setNewCarPositionAndRandomDirection(){
-        cars.getLast().position.setPosition(Math.random()*800, Math.random()*560);
+        cars.getLast().position.setPosition(Math.random()*700, Math.random()*500);
         for (int i= 0; i <= Math.random()*4; i++){
             cars.getLast().turnRight();
         }
