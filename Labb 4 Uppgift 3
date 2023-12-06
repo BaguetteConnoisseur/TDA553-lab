@@ -1,0 +1,26 @@
+Observer:
+ Vi använder det i buttons för våra actionlisteners kollar om vi har klickat på knappen, ifall programmet ska initiera en funktion.
+ Egentligen så behöver vi nog inte använda det någon annanstans för vi använder dem för att kunna anropa funktioner från användargränssnittet.
+
+Factory Method:
+Ja, vi använder factory method i klassen CarFactory för att kunna instansiera nya bilar och lastbilar, avsiktligt för att kunna få en bra struktur på koden.
+Vi löste problem att användaren inte hade direkt kontroll eller kontakt med subklasserna av de olika modellerna av bilar.
+
+ Just nu som programmet är så kommer det inte hjälpa koden om man skulle försöka lägga till en till Factory Method i koden.
+ Sen också att vi inte har något större behov av att ha en till Factory Method för då skulle användaren teoretiskt sett få tillgång till klasser och funktioner som användaren inte ska ha åtkomst till.
+
+State:
+ Vi använder “State Design Pattern” genom klasserna Ramp och Storage genom att bara tillåta bilar/lastbilar med en ramp att kunna bara lasta bilar när rampen är nere och att den inte kan köra om rampen är nere.
+ Med Storage så är det liknande att vissa Workshops bara tar in några slags bilar eller att vissa lastbilar bara kan lasta på någon slags bil.
+ “State Design Pattern” används avsiktligt för att kunna göra att metoderna fungerar och får en tydlig skillnad på ifall t.ex att rampen är nere eller att det inte går att lasta på den sortens bil.
+ Det löste många problem som att kunna ha restriktioner på våra kompositions och ge dem deras arbetsuppgifter och att de fungerar på ett bra sätt.
+
+ Programmet tycker vi inte behöver någon mer “State Design Pattern” just nu iallafall, för att vi redan har det implementerat på de delarna som vi tror behöver den.
+
+Composite:
+ Vi använder en “Composite Design Pattern” över nästan hela projektet där vi ha kompositions av olika typer som Ramp, Storage och att vi använder kompositions i klasser
+ från andra klasser och det hjälper med implementeringen för koden och att den ska kunna köras.
+
+ Man skulle kunna lägga in mer kompositions till bilarna för att göra dem mer verklighetstrogna men för programmet
+  nu och för det syfte den har så skulle vi säga att det inte behövs någon mer “Composite Design Pattern”
+
