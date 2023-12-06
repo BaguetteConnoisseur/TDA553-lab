@@ -36,6 +36,12 @@ public class CarView extends JFrame{
 
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
+    JButton addVolvo240Button = new JButton("Create Volvo240");
+    JButton addSaab95Button = new JButton("Create Saab95");
+    JButton addScaniaButton = new JButton("Create Scania");
+    JButton removeVolvo240 = new JButton("Remove Volvo240");
+    JButton removeSaab95 = new JButton("Remove Saab95");
+    JButton removeScania = new JButton("Remove Scania");
 
     // Constructor
     public CarView(String frameName, ArrayList<Cars> cars){
@@ -74,14 +80,27 @@ public class CarView extends JFrame{
 
         this.add(gasPanel);
 
-        controlPanel.setLayout(new GridLayout(2,4));
+        addVolvo240Button.setBackground(Color.CYAN);
+        addSaab95Button.setBackground(Color.CYAN);
+        addScaniaButton.setBackground(Color.CYAN);
+        removeVolvo240.setBackground(Color.RED);
+        removeSaab95.setBackground(Color.RED);
+        removeScania.setBackground(Color.RED);
 
+        controlPanel.setLayout(new GridLayout(4,3));
         controlPanel.add(gasButton, 0);
         controlPanel.add(turboOnButton, 1);
         controlPanel.add(liftBedButton, 2);
         controlPanel.add(brakeButton, 3);
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
+        controlPanel.add(addVolvo240Button, 6);
+        controlPanel.add(addSaab95Button, 7);
+        controlPanel.add(addScaniaButton, 8);
+        controlPanel.add(removeVolvo240,9);
+        controlPanel.add(removeSaab95,10);
+        controlPanel.add(removeScania,11);
+
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);

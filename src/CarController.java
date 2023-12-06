@@ -111,6 +111,58 @@ public class CarController {
                 raiseBed();
             }
         });
+        frame.addVolvo240Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cars.add(CarFactory.createVolvo240());
+            }
+        });
+        frame.addSaab95Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cars.add(CarFactory.createSaab95());
+            }
+        });
+        frame.addScaniaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cars.add(CarFactory.createScania());
+            }
+        });
+        frame.removeVolvo240.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (Cars car : cars){
+                    if (car instanceof Volvo240){
+                        cars.remove(car);
+                        break;
+                    }
+                }
+            }
+        });
+        frame.removeSaab95.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (Cars car : cars){
+                    if (car instanceof Saab95){
+                        cars.remove(car);
+                        break;
+                    }
+                }
+            }
+        });
+        frame.removeScania.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (Cars car : cars){
+                    if (car instanceof Scania){
+                        cars.remove(car);
+                        break;
+                    }
+                }
+            }
+        });
+
     }
     /*
     void moveit( Cars car, int x, int y){
