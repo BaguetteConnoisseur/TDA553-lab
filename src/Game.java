@@ -39,24 +39,10 @@ public class Game{
                 car.move();
                 int x = (int) Math.round(car.position.getPositionX());
                 int y = (int) Math.round(car.position.getPositionY());
-                //moveit(car, x, y);
                 cc.changeDirectionIfCarIsOutOfBounds(car);
                 // repaint() calls the paintComponent method of the panel
-                cc.frame.drawPanel.repaint();
             }
-            
-        }
-    }
-    public void createCar(String name){
-        switch(name) {
-            case "Volvo240":
-                Volvo240 volvo240 = CarFactory.createVolvo240();
-            case "Saab95":
-                Saab95 saab95 = CarFactory.createSaab95();
-            case "Scania":
-                Scania scania = CarFactory.createScania();
-            case "TransportTruck":
-                TransportTruck transporttruck = CarFactory.createTransportTruck();
+            cc.frame.drawPanel.repaint();
         }
     }
 }
