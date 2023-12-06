@@ -50,7 +50,6 @@ public class DrawPanel extends JPanel{
             if (car.vehicleImage == null){
                 addCarImage(car);
             }
-            System.out.println(car.vehicleImage);
             g.drawImage(car.vehicleImage, (int)car.getPositionX(), (int)car.getPositionY(), null);
 
         }
