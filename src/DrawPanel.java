@@ -13,7 +13,7 @@ import java.util.Map;
 public class DrawPanel extends JPanel{
     // To keep track of a single cars position
     //HashMap<Cars, Point> carPoints = new HashMap<Cars, Point>();
-    ArrayList<Cars> cars = new ArrayList<Cars>();
+    ArrayList<Cars> cars;
 
 
     // Initializes the panel and reads the images
@@ -39,11 +39,28 @@ public class DrawPanel extends JPanel{
         }
     }
 
+    private void addCarImage(Cars car){
+        try {
+            // You can remove the "pics" part if running outside of IntelliJ and
+            // everything is in the same main folder.
+            // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
+            // Remember to right-click src New -> Package -> name: pics -> MOVE *.jpg to pics.
+            // if you are starting in IntelliJ.
+            car.vehicleImage = ImageIO.read(DrawPanel.class.getResourceAsStream(car.getModelName() + ".jpg"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     // This method is called each time the panel updates/refreshes/repaints itself
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (Cars car: cars){
+            if (car.vehicleImage == null){
+                addCarImage(car);
+            }
+            System.out.println(car.vehicleImage);
             g.drawImage(car.vehicleImage, (int)car.getPositionX(), (int)car.getPositionY(), null);
 
         }
